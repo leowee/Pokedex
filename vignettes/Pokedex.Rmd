@@ -1,0 +1,29 @@
+---
+title: "Pokedex"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Pokedex}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(Pokedex)
+library(echarts4r)
+```
+
+```{r}
+dataset <- data.table::data.table(iris)
+dataset %>% 
+  echarts4r::e_chart(Sepal.Length) %>% 
+  echarts4r::e_scatter(Petal.Length) %>% 
+  echarts4r::e_tooltip(trigger = "item") %>% 
+  echarts4r::e_title(text = "Test")
+```
